@@ -106,16 +106,39 @@ namespace MapNavi
         {
             foreach (Node placeOnMap in places)
             {   
-/*
-                if (x >= (placeOnMap.X - (placeOnMap.shape.ActualWidth / 2)) && x <= (placeOnMap.X + (placeOnMap.shape.ActualWidth/2))
-                    && y >= (placeOnMap.Y - (placeOnMap.shape.ActualHeight / 2)) && y <= (placeOnMap.Y + (placeOnMap.shape.ActualHeight)-5))
+
+                if (x >= (placeOnMap.X - (placeOnMap.shape.Width / 2)) && x <= (placeOnMap.X + (placeOnMap.shape.Width/2))
+                    && y >= (placeOnMap.Y - (placeOnMap.shape.Height / 2)) && y <= (placeOnMap.Y + (placeOnMap.shape.Height)/*-5*/))
                 {
                     return placeOnMap;
                 }
-                */
+                
             }
 
             return null;
+        }
+
+        public void CalculateSuccessors()
+        {
+
+            foreach (Node n in places)
+            {
+                Node north = getNodeAtPoint((n.X + 25), (n.Y + 25) - 50);
+                Node south = getNodeAtPoint((n.X + 25), (n.Y + 25) + 50);
+                Node west = getNodeAtPoint((n.X + 25) - 50, (n.Y + 25) + 50);
+                Node east = getNodeAtPoint((n.X + 25) + 50, (n.Y + 25) + 50);
+
+                if (north != null) n.Successors.Add(north);
+                if (south != null) n.Successors.Add(south);
+                if (west != null) n.Successors.Add(west);
+                if (east != null) n.Successors.Add(east);
+            }
+
+            System.Windows.Forms.MessageBox.Show("Successors were successfully calculated");
+            foreach (Node s in getNodeAtPoint(212, 69).Successors)
+            {
+                Console.WriteLine(s.Name);
+            }
         }
 
 

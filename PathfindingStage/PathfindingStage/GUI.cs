@@ -14,7 +14,7 @@ namespace PathfindingStage
         {
             if (node != null)
             {
-                graphics.FillRectangle(Brushes.Crimson, node.shape);
+                graphics.FillRectangle(Brushes.LightGray, node.shape);
                 //graphics.Dispose();
             }
         }

@@ -61,6 +61,11 @@ namespace MapNavi
                 routeQueue.Enqueue(ancestor);
             }
 
+            foreach (string s in route)
+            {
+                Console.WriteLine(s);
+            }
+
             return route;
         }
 

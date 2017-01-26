@@ -28,10 +28,7 @@ namespace MapNavi
         public int X { get; set; }
         public int Y { get; set; }
 
-
         public Rectangle shape;
-        //[NonSerialized]
-        //public Shape shape; // Zmienne z przestrzeni nazw Windows.Shapes nie mogą być serializowane dlatego proces odtworzenia graficznej mapy jest troszkę trudniejszy do osiągnięcia
 
 
         public Node(string name)

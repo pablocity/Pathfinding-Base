@@ -13,16 +13,20 @@ namespace PathfindingStage
         
         public static void GenerateMap(Graphics graphics, ref Map mapToGenerate)
         {
+            BFS search = new BFS();
             int a = 0;
-            for (int i = 160; i < 160 + (mapToGenerate.X * 53); i+=53)
+            for (int i = 160; i < 160 + (mapToGenerate.X * 52); i+=52)
             {
-                for (int j = 15; j < 15 + (mapToGenerate.Y * 53); j+=53)
+                for (int j = 17; j < 17 + (mapToGenerate.Y * 52); j+=52)
                 {
                     a++;
                     mapToGenerate.CreateNodes(i, j, "Punkt nr. " + a, graphics);
                     
                 }
             }
+            mapToGenerate.CalculateSuccessors();
+            search.Search(mapToGenerate.getNodeAtPoint(160, 17), mapToGenerate.getNodeAtPoint(420, 173));
+            search.GetRoute(mapToGenerate.getNodeAtPoint(420, 173));
         }
 
         private void AddObstacles()
