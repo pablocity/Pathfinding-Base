@@ -7,14 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MapNavi;
 
 namespace PathfindingStage
 {
     public partial class Form1 : Form
     {
+        Graphics graphics;
+        Map map = new Map();
+        
         public Form1()
         {
             InitializeComponent();
+            graphics = CreateGraphics();
+        }
+
+        private void showRoute_Click(object sender, EventArgs e)
+        {
+            MapGenerator.GenerateMap(graphics, ref map);
+            //graphics.FillRectangle(Brushes.Crimson, new Rectangle(200, 15, 50, 50));
         }
     }
 }

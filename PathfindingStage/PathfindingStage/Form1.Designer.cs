@@ -48,24 +48,26 @@
             this.panel2.Controls.Add(this.showRoute);
             this.panel2.Location = new System.Drawing.Point(160, 499);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(712, 50);
+            this.panel2.Size = new System.Drawing.Size(734, 50);
             this.panel2.TabIndex = 1;
             // 
             // showRoute
             // 
             this.showRoute.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.showRoute.Location = new System.Drawing.Point(601, 3);
+            this.showRoute.Location = new System.Drawing.Point(620, 3);
             this.showRoute.Name = "showRoute";
-            this.showRoute.Size = new System.Drawing.Size(108, 44);
+            this.showRoute.Size = new System.Drawing.Size(111, 44);
             this.showRoute.TabIndex = 2;
             this.showRoute.Text = "Pokaż drogę";
             this.showRoute.UseVisualStyleBackColor = false;
+            this.showRoute.Click += new System.EventHandler(this.showRoute_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(906, 561);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";

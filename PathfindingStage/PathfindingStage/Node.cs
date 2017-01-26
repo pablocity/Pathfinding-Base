@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace MapNavi
 {
@@ -28,6 +29,7 @@ namespace MapNavi
         public int Y { get; set; }
 
 
+        public Rectangle shape;
         //[NonSerialized]
         //public Shape shape; // Zmienne z przestrzeni nazw Windows.Shapes nie mogą być serializowane dlatego proces odtworzenia graficznej mapy jest troszkę trudniejszy do osiągnięcia
 

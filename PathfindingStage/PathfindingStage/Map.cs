@@ -4,21 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
+using System.Drawing;
+using PathfindingStage;
 
 namespace MapNavi
 {
-
     // Klasa reprezentuje obiekt mapy
 
-    class Map
+    public class Map
     {
-        
+
         public List<Node> places; // Lista wszystkich miejsc (node'ów) na mapie
+
+
+        // Szerokość i wysokość mapy
+        public int X { get; private set; }
+        public int Y { get; private set; }
+
+        public bool ObstaclePenetration = false;
 
         public Node selectedLocation = null;
 
         public Map()
         {
+            //TODO Dodać współrzędne jako parametr konstruktora
+            X = 14;
+            Y = 9;
             places = new List<Node>();
         }
 
@@ -36,14 +47,11 @@ namespace MapNavi
                 selectedLocation.Successors.Add(secondLocation);
                 selectedLocation.Edges.Add(tempEdge);
 
-                if (twoWay)
-                {
-                    tempEdge.twoWay = true; //
-                    tempEdge.isDrawn = true; // Zmienne służące do odtworzenia obrazu mapy podczas deserializacji
-                    secondLocation.Successors.Add(selectedLocation);
-                    secondLocation.Edges.Add(new Edge(secondLocation, selectedLocation, cost));
-
-                }
+                
+                tempEdge.twoWay = true; //
+                tempEdge.isDrawn = true; // Zmienne służące do odtworzenia obrazu mapy podczas deserializacji
+                secondLocation.Successors.Add(selectedLocation);
+                secondLocation.Edges.Add(new Edge(secondLocation, selectedLocation, cost));
 
                 //GUI.DrawEdge(secondLocation, selectedLocation, c, out propEdge, twoWay);
 
@@ -62,40 +70,20 @@ namespace MapNavi
         // Tworzy wierzchołek jeśli nie wykracza po za konkretny obszar (eliminuje możliwość dodania wierzchołka, który jest w połowie w ścianie)
         //Współrzędne wpisane na sztywno ale spokojnie można by zamiast nich pobrać x, y konkretnych ścian i na nich operować,
         //w tym wypadku niepotrzebne bo nie ma możliwości rozszerzania okna, oraz nie pozwala na nachodzenie na siebie miejsc
-        public void CreateNodes(int x, int y, string name, ref int nodeNumber)
+        public void CreateNodes(int x, int y, string name, Graphics graphics)
         {
 
-            if (x >= 15 && y >= 15 && y <= 387 && x <= 715)
-            {
-                foreach(Node n in places)
-                {
-                    if (n.X + 40 < x || n.X - 40 > x)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        if (n.Y - 40 > y || n.Y + 40 < y)
-                            continue;
-                        else
-                            return;
-                    }
-                }
+            Node node = new Node(name);
 
-                nodeNumber++;
-                Node node = new Node(name);
+            node.X = x;
+            node.Y = y;
 
-                node.X = x;
-                node.Y = y;
+            node.shape = new Rectangle(new Point(x, y), new Size(50, 50));
 
-                this.places.Add(node);
+            this.places.Add(node);
 
-                //GUI.CreateNode(node, canvas);
-            }
-            else
-                return;
-
-            
+            GUI.CreateNode(graphics, node);
+             
         }
 
 
