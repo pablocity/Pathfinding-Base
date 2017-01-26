@@ -13,10 +13,8 @@ namespace MapNavi
     class PriorityQueue : IEnumerable // Pozwala wyliczać elementy kolekcji w pętli foreach
     {
 
-
         private List<Node> priorityQueue;
         
-
         // Indekser - dzięki niemu można uzyskać dostęp do listy poprzez indeks instancji PriorityQueue
         public Node this[int index]
         {

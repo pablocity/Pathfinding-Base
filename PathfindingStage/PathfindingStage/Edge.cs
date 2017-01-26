@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Shapes;
+//using System.Windows.Shapes;
 
 namespace MapNavi
 {
@@ -22,8 +22,8 @@ namespace MapNavi
 
         public bool twoWay = true;
 
-        [NonSerialized]
-        public Line graphicEdge = null; // Jak w przypadku elipsy, brak możliwości serializacji utrudnia odtworzenie mapy
+        //[NonSerialized]
+        //public Line graphicEdge = null;
 
         public Edge(Node location_a, Node location_b, int cost)
         {

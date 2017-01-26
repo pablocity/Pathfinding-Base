@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media;
-using System.Windows.Shapes;
-using System.Windows.Controls;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
 
 namespace MapNavi
 {
@@ -27,12 +23,12 @@ namespace MapNavi
         }
 
         // Tworzy połączenie między miejscami i oddelegowuje zadanie narysowani ich do klasy GUI
-        public void CreateEdges(int cost, Node secondLocation, Canvas c, bool twoWay)
+        public void CreateEdges(int cost, Node secondLocation, bool twoWay)
         {
             if (secondLocation != null)
             {
 
-                Line propEdge;
+                //Line propEdge;
 
 
                 Edge tempEdge = new Edge(selectedLocation, secondLocation, cost);
@@ -49,10 +45,10 @@ namespace MapNavi
 
                 }
 
-                GUI.DrawEdge(secondLocation, selectedLocation, c, out propEdge, twoWay);
+                //GUI.DrawEdge(secondLocation, selectedLocation, c, out propEdge, twoWay);
 
                 Edge temporaryEdge = new Edge(secondLocation, selectedLocation, cost);
-                temporaryEdge.graphicEdge = propEdge;
+                //temporaryEdge.graphicEdge = propEdge;
 
 
                 secondLocation = null;
@@ -66,7 +62,7 @@ namespace MapNavi
         // Tworzy wierzchołek jeśli nie wykracza po za konkretny obszar (eliminuje możliwość dodania wierzchołka, który jest w połowie w ścianie)
         //Współrzędne wpisane na sztywno ale spokojnie można by zamiast nich pobrać x, y konkretnych ścian i na nich operować,
         //w tym wypadku niepotrzebne bo nie ma możliwości rozszerzania okna, oraz nie pozwala na nachodzenie na siebie miejsc
-        public void CreateNodes(int x, int y, string name, Canvas canvas, ref int nodeNumber)
+        public void CreateNodes(int x, int y, string name, ref int nodeNumber)
         {
 
             if (x >= 15 && y >= 15 && y <= 387 && x <= 715)
@@ -94,7 +90,7 @@ namespace MapNavi
 
                 this.places.Add(node);
 
-                GUI.CreateNode(node, canvas);
+                //GUI.CreateNode(node, canvas);
             }
             else
                 return;
@@ -110,7 +106,7 @@ namespace MapNavi
             {
                 selectedLocation = toSelect;
 
-                GUI.SelectNode(toSelect);
+                //GUI.SelectNode(toSelect);
             }
             
 
@@ -122,12 +118,13 @@ namespace MapNavi
         {
             foreach (Node placeOnMap in places)
             {   
-
+/*
                 if (x >= (placeOnMap.X - (placeOnMap.shape.ActualWidth / 2)) && x <= (placeOnMap.X + (placeOnMap.shape.ActualWidth/2))
                     && y >= (placeOnMap.Y - (placeOnMap.shape.ActualHeight / 2)) && y <= (placeOnMap.Y + (placeOnMap.shape.ActualHeight)-5))
                 {
                     return placeOnMap;
                 }
+                */
             }
 
             return null;
