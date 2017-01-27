@@ -24,6 +24,8 @@ namespace PathfindingStage
                     
                 }
             }
+            //graphics.Dispose();
+            //mapToGenerate.places.RemoveAt(1);
             mapToGenerate.CalculateSuccessors();
             search.Search(mapToGenerate.getNodeAtPoint(160, 17), mapToGenerate.getNodeAtPoint(420, 173));
             search.GetRoute(mapToGenerate.getNodeAtPoint(420, 173));

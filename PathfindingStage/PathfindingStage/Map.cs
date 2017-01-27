@@ -107,8 +107,8 @@ namespace MapNavi
             foreach (Node placeOnMap in places)
             {   
 
-                if (x >= (placeOnMap.X - (placeOnMap.shape.Width / 2)) && x <= (placeOnMap.X + (placeOnMap.shape.Width/2))
-                    && y >= (placeOnMap.Y - (placeOnMap.shape.Height / 2)) && y <= (placeOnMap.Y + (placeOnMap.shape.Height)/*-5*/))
+                if (x >= ((placeOnMap.X + 25) - (placeOnMap.shape.Width / 2)) && x <= ((placeOnMap.X + 25) + (placeOnMap.shape.Width/2))
+                    && y >= ((placeOnMap.Y + 25) - (placeOnMap.shape.Height / 2)) && y <= ((placeOnMap.Y + 25) + (placeOnMap.shape.Height)/2))
                 {
                     return placeOnMap;
                 }
@@ -125,8 +125,8 @@ namespace MapNavi
             {
                 Node north = getNodeAtPoint((n.X + 25), (n.Y + 25) - 50);
                 Node south = getNodeAtPoint((n.X + 25), (n.Y + 25) + 50);
-                Node west = getNodeAtPoint((n.X + 25) - 50, (n.Y + 25) + 50);
-                Node east = getNodeAtPoint((n.X + 25) + 50, (n.Y + 25) + 50);
+                Node west = getNodeAtPoint((n.X + 25) - 50, (n.Y + 25));
+                Node east = getNodeAtPoint((n.X + 25) + 50, (n.Y + 25));
 
                 if (north != null) n.Successors.Add(north);
                 if (south != null) n.Successors.Add(south);
