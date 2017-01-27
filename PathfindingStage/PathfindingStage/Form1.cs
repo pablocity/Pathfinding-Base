@@ -11,6 +11,11 @@ using MapNavi;
 
 namespace PathfindingStage
 {
+
+    //TODO kolorowanie drogi
+    //TODO czyszczenie zasobów niezarządzanych
+    //TODO flood-fill algorithm - generowanie losowych przeszkód
+
     public partial class Form1 : Form
     {
         Graphics graphics;
