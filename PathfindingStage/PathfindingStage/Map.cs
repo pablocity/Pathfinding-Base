@@ -88,16 +88,24 @@ namespace MapNavi
 
 
         // Zaznacza konkretne miejsce
-        public void SelectNode(Node toSelect)
+        public void SelectNode(Graphics graphics, Node toSelect)
         {
             if (toSelect != null)
             {
                 selectedLocation = toSelect;
 
-                //GUI.SelectNode(toSelect);
+                GUI.SelectNode(graphics, toSelect, Brushes.Green);
             }
-            
 
+        }
+
+        public void Unselect(Graphics graphics, Node toUnselect)
+        {
+            if (toUnselect != null && selectedLocation != null)
+            {
+                selectedLocation = null;
+                GUI.UnselectNode(graphics, toUnselect);
+            }
         }
 
 
@@ -128,17 +136,28 @@ namespace MapNavi
                 Node west = getNodeAtPoint((n.X + 25) - 50, (n.Y + 25));
                 Node east = getNodeAtPoint((n.X + 25) + 50, (n.Y + 25));
 
+                Node northEast = getNodeAtPoint((n.X + 25) + 50, (n.Y + 25) - 50);
+                Node northWest = getNodeAtPoint((n.X + 25) - 50, (n.Y + 25) - 50);
+                Node southEast = getNodeAtPoint((n.X + 25) + 50, (n.Y + 25) + 50);
+                Node southWest = getNodeAtPoint((n.X + 25) - 50, (n.Y + 25) + 50);
+
                 if (north != null) n.Successors.Add(north);
                 if (south != null) n.Successors.Add(south);
                 if (west != null) n.Successors.Add(west);
                 if (east != null) n.Successors.Add(east);
+                if (northEast != null) n.Successors.Add(northEast);
+                if (northWest != null) n.Successors.Add(northWest);
+                if (southEast != null) n.Successors.Add(southEast);
+                if (southWest != null) n.Successors.Add(southWest);
             }
 
             System.Windows.Forms.MessageBox.Show("Successors were successfully calculated");
+            /*
             foreach (Node s in getNodeAtPoint(212, 69).Successors)
             {
                 Console.WriteLine(s.Name);
             }
+            */
         }
 
 

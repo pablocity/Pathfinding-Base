@@ -11,14 +11,17 @@ namespace MapNavi
     // Prosty sposób obliczania drogi tylko na podstawie liczby połączeń niezależnie od kosztu (odległości) każdego z nich
     class BFS
     {
-        Queue<Node> queue = new Queue<Node>();
+        Queue<Node> queue;
         int currentLevel = 0;
 
-        Queue<Node> routeQueue = new Queue<Node>();
-        List<string> route = new List<string>();
+        Queue<Node> routeQueue;
+        List<Node> route;
 
         public Dictionary<string, int> Search(Node startPoint, Node endPoint)
         {
+            queue = new Queue<Node>();
+            currentLevel = 0;
+            
             Console.WriteLine("Punkt początkowy to " + startPoint.Name + "\n\nCel to " + endPoint.Name + "\n");
 
             queue.Enqueue(startPoint);
@@ -49,21 +52,23 @@ namespace MapNavi
             
         }
 
-        public List<string> GetRoute(Node endPoint)
+        public List<Node> GetRoute(Node endPoint)
         {
+            routeQueue = new Queue<Node>();
+            route = new List<Node>();
             routeQueue.Enqueue(endPoint);
-            route.Add(endPoint.Name);
+            route.Add(endPoint);
 
             for (int i = 0; i < endPoint.Distance; i++)
             {
                 Node ancestor = routeQueue.Dequeue().Ancestor;
-                route.Add(ancestor.Name);
+                route.Add(ancestor);
                 routeQueue.Enqueue(ancestor);
             }
 
-            foreach (string s in route)
+            foreach (Node s in route)
             {
-                Console.WriteLine(s);
+                Console.WriteLine(s.Name);
             }
 
             return route;

@@ -7,14 +7,15 @@ using System.Drawing;
 
 namespace MapNavi
 {
-    [Serializable]
     public class Node
     {
-        public int Distance; //
-        public Node Ancestor; //
+        public int Distance;
+        public Node Ancestor;
 
-        public int TotalCost; //
-        public int FullValue; // Zmienne używane w algorytmie
+        public int TotalCost;
+        public int FullValue;
+
+        public bool IsObstacle { get; private set; }
 
         public string Name { get; private set; }
 
@@ -38,7 +39,7 @@ namespace MapNavi
             Name = name;
             TotalCost = 0;
             FullValue = 0;
-            
+            IsObstacle = false;
         }
        
         // Przeciążona metoda Equals pomocna przy porównywaniu w algorytmie (porównuje na podstawie właściwości Name obiektu)
