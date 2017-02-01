@@ -76,7 +76,7 @@ namespace PathfindingStage
                 for (int i = 0; i < route.Count; i++)
                 {
                     
-                    GUI.SelectNode(graphics, route[i], Brushes.GreenYellow, 15);
+                    GUI.SelectNode(graphics, route[i], Brushes.GreenYellow, 35);
                     if (i == 0)
                         GUI.SelectNode(graphics, route[i], Brushes.Crimson);
                     if (i == route.Count-1)
